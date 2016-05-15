@@ -1,6 +1,6 @@
-# Vagrant Lemp Stack for Bedrock
+# Vagrant LEMP Stack for Bedrock
 
-A simple Vagrantfile and bootstrap script that installs a Vagrant box suitable for deploying Wordpress with Roots.io Bedrock.
+A simple Vagrantfile and bootstrap script that installs a Vagrant box suitable for deploying Wordpress with [Roots.io Bedrock](https://roots.io/bedrock/).
 
 ###What's installed?
 * PHP 7
