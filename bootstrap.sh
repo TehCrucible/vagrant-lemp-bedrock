@@ -7,20 +7,25 @@ DATABASE='data'
 # create public folder
 sudo mkdir "/var/www/html/web"
 
-# add repo for php5.6
+# add repo for php7
 sudo add-apt-repository ppa:ondrej/php
+
+#add repo for MariaDB
+sudo apt-get install software-properties-common
+sudo apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xcbcb082a1bb943db
+sudo add-apt-repository 'deb [arch=amd64,i386] http://mariadb.mirror.digitalpacific.com.au/repo/10.1/ubuntu trusty main'
 
 # update / upgrade
 sudo apt-get update
 sudo apt-get -y upgrade
 
 # install nginx and php
-sudo apt-get install -y nginx php7.0 php7.0-fpm
+sudo apt-get install -y nginx php7.0 php7.0-fpm php7.0-zip php-xml
 
 # install mysql and give password to installer
-sudo debconf-set-selections <<< "mysql-server mysql-server/root_password password $PASSWORD"
-sudo debconf-set-selections <<< "mysql-server mysql-server/root_password_again password $PASSWORD"
-sudo apt-get -y install mysql-server
+sudo debconf-set-selections <<< "maria-db-10.1 mysql-server/root_password password $PASSWORD"
+sudo debconf-set-selections <<< "maria-db-10.1 mysql-server/root_password_again password $PASSWORD"
+sudo apt-get -y install mariadb-server
 sudo apt-get install php7.0-mysql
 sudo mysql -uroot -p${PASSWORD} -e"CREATE DATABASE ${DATABASE};"
 
