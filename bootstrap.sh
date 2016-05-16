@@ -20,7 +20,7 @@ sudo apt-get update
 sudo apt-get -y upgrade
 
 # install nginx and php
-sudo apt-get install -y nginx php7.0 php7.0-fpm php7.0-zip php-xml
+sudo apt-get install -y nginx php7.0 php7.0-fpm php7.0-zip php-xml php-gd php-imagick
 
 # install mysql and give password to installer
 sudo debconf-set-selections <<< "maria-db-10.1 mysql-server/root_password password $PASSWORD"
