@@ -3,11 +3,12 @@
 A simple Vagrantfile and bootstrap script that installs a Vagrant box suitable for deploying Wordpress with [Roots.io Bedrock](https://roots.io/bedrock/).
 
 ###What's installed?
-* PHP 7
+* PHP 7.1
 * nginx
 * MariaDB
 * git
 * Composer
+* Backup script
 
 Put `Vagrantfile` and `bootstrap.sh` inside a folder and do a `vagrant up` on the command line.
 This box uses Ubuntu 14.04 LTS "Trustry Thar" 64bit, so if you don't have the basic box already, do a 
