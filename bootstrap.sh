@@ -20,13 +20,13 @@ sudo apt-get update
 sudo apt-get -y upgrade
 
 # install nginx and php
-sudo apt-get install -y nginx php7.0 php7.0-fpm php7.0-zip php-xml php-gd php-imagick
+sudo apt-get install -y nginx php7.1 php7.1-fpm php7.1-zip php-xml php-gd php-imagick
 
 # install mysql and give password to installer
 sudo debconf-set-selections <<< "maria-db-10.1 mysql-server/root_password password $PASSWORD"
 sudo debconf-set-selections <<< "maria-db-10.1 mysql-server/root_password_again password $PASSWORD"
 sudo apt-get -y install mariadb-server
-sudo apt-get install php7.0-mysql
+sudo apt-get install php7.1-mysql
 sudo mysql -uroot -p${PASSWORD} -e"CREATE DATABASE ${DATABASE};"
 
 sudo rm /etc/nginx/sites-available/default
@@ -44,23 +44,20 @@ server {
     try_files $uri $uri/ /index.php?$args;
     }
 
+    sendfile off;
+    client_max_body_size 8M;
+
     location ~ \.php$ {
     try_files $uri =404;
     include fastcgi_params;
-    fastcgi_pass unix:/run/php/php7.0-fpm.sock;
+    fastcgi_pass unix:/run/php/php7.1-fpm.sock;
     }
 }
 EOF
 
-# add php info
-sudo touch /var/www/html/web/info.php
-sudo cat >> /var/www/html/web/info.php <<'EOF'
-<?php phpinfo(); ?>
-EOF
-
 # restart nginx
 service nginx restart
-sudo service php7.0-fpm restart
+sudo service php7.1-fpm restart
 
 # install git
 sudo apt-get -y install git
