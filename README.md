@@ -14,8 +14,8 @@ A simple Vagrantfile and bootstrap script that installs a Vagrant box suitable f
 
 Use `vagrant box add ubuntu/xenial64` to download and install vagrant image.
 
-Edit `bootstrap.sh` to include your desired database name and password. Database user will be `root`.
-
 Put `Vagrantfile` and `bootstrap.sh` inside a folder and do a `vagrant up` on the command line.
 
 Once Vagrant is provisioned, your new vagrant box will be running at IP `192.168.33.22`. You may want to add this to your hosts file.
+
+MySQL root password will be `password` and default database will be `database`.
